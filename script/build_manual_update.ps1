@@ -57,7 +57,7 @@ foreach ($name in $runtimeFiles) {
 # Preserve available licences in the update archive too. Missing notices fail the build.
 $licenseFiles = @{
     "MintVPN-GPL-3.0.txt" = "LICENSE"
-    "Upstream-Notice.md" = "QUATTRO_NOTICE.md"
+    "Upstream-Notice.md" = "THRONE_NOTICE.md"
     "QHotkey-BSD-3-Clause.txt" = "3rdparty/QHotkey/LICENSE"
     "SQLiteCpp-LICENSE.txt" = "3rdparty/SQLiteCpp/LICENSE.txt"
     "simple-protobuf-LICENSE.txt" = "3rdparty/simple-protobuf/LICENSE"

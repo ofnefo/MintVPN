@@ -335,7 +335,7 @@ install_ready:
   ; Include available upstream notices with each architecture's binary distribution.
   SetOutPath "$INSTDIR\licenses"
   File /oname=MintVPN-GPL-3.0.txt "LICENSE"
-  File /oname=Upstream-Notice.md "QUATTRO_NOTICE.md"
+  File /oname=Upstream-Notice.md "THRONE_NOTICE.md"
   File /oname=QHotkey-BSD-3-Clause.txt "3rdparty\QHotkey\LICENSE"
   File /oname=SQLiteCpp-LICENSE.txt "3rdparty\SQLiteCpp\LICENSE.txt"
   File /oname=simple-protobuf-LICENSE.txt "3rdparty\simple-protobuf\LICENSE"
