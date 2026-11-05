@@ -1,0 +1,1269 @@
+{
+  "basis": "MintVPNCore.exe Go build metadata; root notices from local versioned Go module cache. Root notices alone may not satisfy all obligations.",
+  "modules": [
+    {
+      "directory": "001",
+      "module": "filippo.io/edwards25519",
+      "version": "v1.2.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "002",
+      "module": "github.com/Mahdi-zarei/speedtest-go",
+      "version": "v1.7.13-0.20260107171856-79c565dfd83a",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "003",
+      "module": "github.com/RyuaNerin/go-krypto",
+      "version": "v1.3.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "004",
+      "module": "github.com/ajg/form",
+      "version": "v1.5.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "005",
+      "module": "github.com/alexbrainman/sspi",
+      "version": "v0.0.0-20231016080023-1a75b4708caa",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "006",
+      "module": "github.com/anchore/go-lzo",
+      "version": "v0.1.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "007",
+      "module": "github.com/andybalholm/brotli",
+      "version": "v1.1.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "008",
+      "module": "github.com/anmitsu/go-shlex",
+      "version": "v0.0.0-20200514113438-38f4b401e2be",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "009",
+      "module": "github.com/anytls/sing-anytls",
+      "version": "v0.0.11",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "010",
+      "module": "github.com/apernet/quic-go",
+      "version": "v0.59.1-0.20260425001925-6c6cc9bcb716",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "011",
+      "module": "github.com/axiomhq/hyperloglog",
+      "version": "v0.0.0-20240319100328-84253e514e02",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "012",
+      "module": "github.com/caddyserver/certmagic",
+      "version": "v0.25.3-0.20260421143802-60d9d8b415d6",
+      "replacement": null,
+      "files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "directory": "013",
+      "module": "github.com/caddyserver/zerossl",
+      "version": "v0.1.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "014",
+      "module": "github.com/cloudflare/circl",
+      "version": "v1.6.4",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "015",
+      "module": "github.com/coder/websocket",
+      "version": "v1.8.14",
+      "replacement": null,
+      "files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "directory": "016",
+      "module": "github.com/cretz/bine",
+      "version": "v0.2.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "017",
+      "module": "github.com/database64128/netx-go",
+      "version": "v0.1.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "018",
+      "module": "github.com/database64128/tfo-go/v2",
+      "version": "v2.3.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "019",
+      "module": "github.com/dblohm7/wingoes",
+      "version": "v0.0.0-20240119213807-a09d6be7affa",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "020",
+      "module": "github.com/dgryski/go-camellia",
+      "version": "v0.0.0-20191119043421-69a8a13fb23d",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "021",
+      "module": "github.com/dgryski/go-metro",
+      "version": "v0.0.0-20180109044635-280f6062b5bc",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "022",
+      "module": "github.com/ebitengine/purego",
+      "version": "v0.10.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "023",
+      "module": "github.com/enfein/mieru/v3",
+      "version": "v3.33.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "024",
+      "module": "github.com/exclavenetwork/sing-juicity",
+      "version": "v0.3.0-beta.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "025",
+      "module": "github.com/fsnotify/fsnotify",
+      "version": "v1.9.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "026",
+      "module": "github.com/fxamacker/cbor/v2",
+      "version": "v2.9.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "027",
+      "module": "github.com/gaissmai/bart",
+      "version": "v0.26.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "028",
+      "module": "github.com/ghodss/yaml",
+      "version": "v1.0.1-0.20220118164431-d8423dcdf344",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "029",
+      "module": "github.com/go-chi/chi/v5",
+      "version": "v5.2.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "030",
+      "module": "github.com/go-chi/render",
+      "version": "v1.0.3",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "031",
+      "module": "github.com/go-ole/go-ole",
+      "version": "v1.3.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "032",
+      "module": "github.com/go4org/hashtriemap",
+      "version": "v0.0.0-20251130024219-545ba229f689",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "033",
+      "module": "github.com/gobwas/httphead",
+      "version": "v0.1.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "034",
+      "module": "github.com/gobwas/pool",
+      "version": "v0.2.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "035",
+      "module": "github.com/gofrs/uuid/v5",
+      "version": "v5.5.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "036",
+      "module": "github.com/golang/groupcache",
+      "version": "v0.0.0-20241129210726-2c02b8208cf8",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "037",
+      "module": "github.com/google/btree",
+      "version": "v1.1.3",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "038",
+      "module": "github.com/google/certificate-transparency-go",
+      "version": "v1.3.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "039",
+      "module": "github.com/google/gopacket",
+      "version": "v1.1.19",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "040",
+      "module": "github.com/google/shlex",
+      "version": "v0.0.0-20191202100458-e7afc7fbc510",
+      "replacement": null,
+      "files": [
+        "COPYING"
+      ]
+    },
+    {
+      "directory": "041",
+      "module": "github.com/google/uuid",
+      "version": "v1.6.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "042",
+      "module": "github.com/gorilla/websocket",
+      "version": "v1.5.3",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "043",
+      "module": "github.com/hashicorp/yamux",
+      "version": "v0.1.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "044",
+      "module": "github.com/hdevalence/ed25519consensus",
+      "version": "v0.2.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "045",
+      "module": "github.com/huin/goupnp",
+      "version": "v1.3.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "046",
+      "module": "github.com/inconshreveable/mousetrap",
+      "version": "v1.1.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "047",
+      "module": "github.com/insomniacslk/dhcp",
+      "version": "v0.0.0-20260220084031-5adc3eb26f91",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "048",
+      "module": "github.com/jackpal/go-nat-pmp",
+      "version": "v1.0.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "049",
+      "module": "github.com/juju/ratelimit",
+      "version": "v1.0.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "050",
+      "module": "github.com/klauspost/compress",
+      "version": "v1.19.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "051",
+      "module": "github.com/klauspost/cpuid/v2",
+      "version": "v2.4.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "052",
+      "module": "github.com/koron/go-ssdp",
+      "version": "v0.0.4",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "053",
+      "module": "github.com/kr/fs",
+      "version": "v0.1.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "054",
+      "module": "github.com/libdns/libdns",
+      "version": "v1.1.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "055",
+      "module": "github.com/libp2p/go-nat",
+      "version": "v1.0.1-0.20250821073202-01afc089f138",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "056",
+      "module": "github.com/libp2p/go-netroute",
+      "version": "v0.2.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "057",
+      "module": "github.com/logrusorgru/aurora",
+      "version": "v2.0.3+incompatible",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "058",
+      "module": "github.com/metacubex/utls",
+      "version": "v1.8.7",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "059",
+      "module": "github.com/mholt/acmez/v3",
+      "version": "v3.1.6",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "060",
+      "module": "github.com/miekg/dns",
+      "version": "v1.1.72",
+      "replacement": null,
+      "files": [
+        "COPYRIGHT",
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "061",
+      "module": "github.com/mitchellh/go-ps",
+      "version": "v1.0.0",
+      "replacement": null,
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "directory": "062",
+      "module": "github.com/pelletier/go-toml",
+      "version": "v1.9.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "063",
+      "module": "github.com/pierrec/lz4/v4",
+      "version": "v4.1.26",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "064",
+      "module": "github.com/pion/dtls/v3",
+      "version": "v3.1.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "065",
+      "module": "github.com/pion/logging",
+      "version": "v0.2.4",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "066",
+      "module": "github.com/pion/stun/v3",
+      "version": "v3.1.6",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "067",
+      "module": "github.com/pion/transport/v4",
+      "version": "v4.0.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "068",
+      "module": "github.com/pires/go-proxyproto",
+      "version": "v0.15.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "069",
+      "module": "github.com/pkg/sftp",
+      "version": "v1.13.10",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "070",
+      "module": "github.com/quic-go/qpack",
+      "version": "v0.6.0",
+      "replacement": null,
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "directory": "071",
+      "module": "github.com/refraction-networking/utls",
+      "version": "v1.8.3-0.20260301010127-aa6edf4b11af",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "072",
+      "module": "github.com/robfig/cron/v3",
+      "version": "v3.0.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "073",
+      "module": "github.com/sagernet/bbolt",
+      "version": "v0.0.0-20231014093535-ea5cb2fe9f0a",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "074",
+      "module": "github.com/sagernet/cors",
+      "version": "v1.2.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "075",
+      "module": "github.com/sagernet/cronet-go",
+      "version": "v0.0.0-20260809192447-ad5810f59b3c",
+      "replacement": [
+        "github.com/parhelia512/cronet-go",
+        "v0.0.0-20260809193224-6287f9c66f94"
+      ],
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "076",
+      "module": "github.com/sagernet/cronet-go/all",
+      "version": "v0.0.0-20260807162344-ec9a39c5ba3b",
+      "replacement": [
+        "github.com/parhelia512/cronet-go/all",
+        "v0.0.0-20260809193224-6287f9c66f94"
+      ],
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "077",
+      "module": "github.com/sagernet/cronet-go/lib/windows_amd64",
+      "version": "v0.0.0-20260809192447-ad5810f59b3c",
+      "replacement": [
+        "github.com/parhelia512/cronet-go/lib/windows_amd64",
+        "v0.0.0-20260809192447-ad5810f59b3c"
+      ],
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "078",
+      "module": "github.com/sagernet/fswatch",
+      "version": "v0.1.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "079",
+      "module": "github.com/sagernet/gliderssh",
+      "version": "v0.3.4-0.20260531100337-2194faca5648",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "080",
+      "module": "github.com/sagernet/gvisor",
+      "version": "v0.0.0-20260727.0-sing-box-mod.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "081",
+      "module": "github.com/sagernet/quic-go",
+      "version": "v0.61.0-sing-box-mod.4",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "082",
+      "module": "github.com/sagernet/sing",
+      "version": "v0.9.0-beta.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "083",
+      "module": "github.com/sagernet/sing-box",
+      "version": "v1.13.16",
+      "replacement": [
+        "github.com/Throneproj/sing-box",
+        "v1.11.16-0.20260819213801-0becae69050d"
+      ],
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "084",
+      "module": "github.com/sagernet/sing-mux",
+      "version": "v0.3.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "085",
+      "module": "github.com/sagernet/sing-openconnect",
+      "version": "v0.0.0-20260810065514-53aa8058f8df",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "086",
+      "module": "github.com/sagernet/sing-openvpn",
+      "version": "v0.0.0-20260729104525-103eb5fe5eb6",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "087",
+      "module": "github.com/sagernet/sing-quic",
+      "version": "v0.7.0-beta.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "088",
+      "module": "github.com/sagernet/sing-shadowsocks",
+      "version": "v0.2.8",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "089",
+      "module": "github.com/sagernet/sing-shadowsocks2",
+      "version": "v0.2.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "090",
+      "module": "github.com/sagernet/sing-shadowtls",
+      "version": "v0.2.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "091",
+      "module": "github.com/sagernet/sing-snell",
+      "version": "v0.0.0-20260727093646-7cb813e07b73",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "092",
+      "module": "github.com/sagernet/sing-tun",
+      "version": "v0.8.12-0.20260810140529-d67734281390",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "093",
+      "module": "github.com/sagernet/sing-vmess",
+      "version": "v0.2.8-0.20250909125414-3aed155119a1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "094",
+      "module": "github.com/sagernet/smux",
+      "version": "v1.5.50-sing-box-mod.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "095",
+      "module": "github.com/sagernet/tailscale",
+      "version": "v1.102.1-sing-box-1.14-mod.2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "096",
+      "module": "github.com/sagernet/wireguard-go",
+      "version": "v0.0.5-0.20260810121456-c6c8a831ef70",
+      "replacement": [
+        "github.com/throneproj/wireguard-go",
+        "v0.0.0-20260814224336-fa1854fe7880"
+      ],
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "097",
+      "module": "github.com/sagernet/ws",
+      "version": "v0.0.0-20231204124109-acfe8907c854",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "098",
+      "module": "github.com/smallstep/pkcs7",
+      "version": "v0.1.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "099",
+      "module": "github.com/spf13/cobra",
+      "version": "v1.10.2",
+      "replacement": null,
+      "files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "directory": "100",
+      "module": "github.com/spf13/pflag",
+      "version": "v1.0.9",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "101",
+      "module": "github.com/tailscale/certstore",
+      "version": "v0.1.1-0.20260409135935-3638fb84b77d",
+      "replacement": null,
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "directory": "102",
+      "module": "github.com/tailscale/go-winio",
+      "version": "v0.0.0-20231025203758-c4f33415bf55",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "103",
+      "module": "github.com/tailscale/hujson",
+      "version": "v0.0.0-20260302212456-ecc657c15afd",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "104",
+      "module": "github.com/tailscale/web-client-prebuilt",
+      "version": "v0.0.0-20250124233751-d4cd19a26976",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "105",
+      "module": "github.com/tjfoc/gmsm",
+      "version": "v1.4.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "106",
+      "module": "github.com/u-root/uio",
+      "version": "v0.0.0-20240224005618-d2acac8f3701",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "107",
+      "module": "github.com/vishvananda/netns",
+      "version": "v0.0.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "108",
+      "module": "github.com/wlynxg/anet",
+      "version": "v0.0.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "109",
+      "module": "github.com/x448/float16",
+      "version": "v0.8.4",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "110",
+      "module": "github.com/xchacha20-poly1305/sing-trusttunnel",
+      "version": "v0.3.0-beta.5",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "111",
+      "module": "github.com/xtls/reality",
+      "version": "v0.0.0-20260322125925-9234c772ba8f",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "112",
+      "module": "github.com/xtls/xray-core",
+      "version": "v1.260327.1-0.20260728075948-5ca6f4b7d4dc",
+      "replacement": [
+        "github.com/throneproj/xray-core",
+        "v1.251015.1-0.20260808214837-735fffaa66af"
+      ],
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "113",
+      "module": "github.com/youmark/pkcs8",
+      "version": "v0.0.0-20240726163527-a2c0da244d78",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "114",
+      "module": "github.com/zeebo/blake3",
+      "version": "v0.2.4",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "115",
+      "module": "go.uber.org/multierr",
+      "version": "v1.11.0",
+      "replacement": null,
+      "files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "directory": "116",
+      "module": "go.uber.org/zap",
+      "version": "v1.27.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "117",
+      "module": "go.uber.org/zap/exp",
+      "version": "v0.3.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "118",
+      "module": "go4.org/mem",
+      "version": "v0.0.0-20240501181205-ae6ca9944745",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "119",
+      "module": "go4.org/netipx",
+      "version": "v0.0.0-20231129151722-fdeea329fbba",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "120",
+      "module": "golang.org/x/crypto",
+      "version": "v0.54.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "121",
+      "module": "golang.org/x/exp",
+      "version": "v0.0.0-20260410095643-746e56fc9e2f",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "122",
+      "module": "golang.org/x/mod",
+      "version": "v0.37.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "123",
+      "module": "golang.org/x/net",
+      "version": "v0.57.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "124",
+      "module": "golang.org/x/oauth2",
+      "version": "v0.36.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "125",
+      "module": "golang.org/x/sync",
+      "version": "v0.22.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "126",
+      "module": "golang.org/x/sys",
+      "version": "v0.47.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "127",
+      "module": "golang.org/x/term",
+      "version": "v0.45.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "128",
+      "module": "golang.org/x/text",
+      "version": "v0.40.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "129",
+      "module": "golang.org/x/time",
+      "version": "v0.15.0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "130",
+      "module": "golang.zx2c4.com/wintun",
+      "version": "v0.0.0-20230126152724-0fa3db229ce2",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "131",
+      "module": "golang.zx2c4.com/wireguard",
+      "version": "v0.0.0-20250521234502-f333402bd9cb",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "132",
+      "module": "golang.zx2c4.com/wireguard/windows",
+      "version": "v1.0.1",
+      "replacement": null,
+      "files": [
+        "COPYING"
+      ]
+    },
+    {
+      "directory": "133",
+      "module": "google.golang.org/genproto/googleapis/rpc",
+      "version": "v0.0.0-20260414002931-afd174a4e478",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "134",
+      "module": "google.golang.org/grpc",
+      "version": "v1.82.1",
+      "replacement": null,
+      "files": [
+        "LICENSE",
+        "NOTICE.txt"
+      ]
+    },
+    {
+      "directory": "135",
+      "module": "google.golang.org/protobuf",
+      "version": "v1.36.11",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "136",
+      "module": "gopkg.in/yaml.v2",
+      "version": "v2.4.0",
+      "replacement": null,
+      "files": [
+        "LICENSE",
+        "LICENSE.libyaml",
+        "NOTICE"
+      ]
+    },
+    {
+      "directory": "137",
+      "module": "gvisor.dev/gvisor",
+      "version": "v0.0.0-20260122175437-89a5d21be8f0",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "directory": "138",
+      "module": "lukechampine.com/blake3",
+      "version": "v1.4.1",
+      "replacement": null,
+      "files": [
+        "LICENSE"
+      ]
+    }
+  ]
+}

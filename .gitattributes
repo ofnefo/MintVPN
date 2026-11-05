@@ -1,0 +1,34 @@
+* text=auto
+
+*.sh text eol=lf
+*.go text eol=lf
+*.mod text eol=lf
+*.sum text eol=lf
+*.cpp text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.hpp text eol=lf
+*.py text eol=lf
+*.nsi text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.cmake text eol=lf
+*.md text eol=lf
+*.qrc text eol=lf
+*.ui text eol=lf
+*.ts text eol=lf
+*.plist text eol=lf
+CMakeLists.txt text eol=lf
+
+*.png binary
+*.ico binary
+*.icns binary
+*.dll binary
+*.exe binary
+*.zip binary
+
+# Preserve upstream notice bytes recorded in the Qt SHA-256 manifest.
+3rdparty/mintvpn-notices/Qt/qtbase/component-notices/** -text
+
+# Keep SPDX cross-document SHA-1 references stable on every platform.
+3rdparty/mintvpn-notices/Qt/sbom/*.spdx -text

@@ -1,0 +1,5 @@
+# Cronet additional notice candidates
+
+The pinned Naiveproxy `third_party/protobuf/BUILD.gn` declares `protobuf_lite` dependencies on Abseil and `utf8_range`. The [pinned Abseil license](https://github.com/SagerNet/naiveproxy/blob/510717a833c95a17218efc550fe6cac02414cad5/src/third_party/abseil-cpp/LICENSE), its [revision metadata](https://github.com/SagerNet/naiveproxy/blob/510717a833c95a17218efc550fe6cac02414cad5/src/third_party/abseil-cpp/README.chromium), and the [pinned utf8_range license](https://github.com/SagerNet/naiveproxy/blob/510717a833c95a17218efc550fe6cac02414cad5/src/third_party/protobuf/third_party/utf8_range/LICENSE) accompany these notices. Source tree and [build target](https://github.com/SagerNet/naiveproxy/blob/510717a833c95a17218efc550fe6cac02414cad5/src/third_party/protobuf/BUILD.gn) are pinned to Naiveproxy `510717a833c95a17218efc550fe6cac02414cad5`.
+
+These two notices supplement the existing partial Cronet notices. Declared build dependencies do not prove the exact released binary's final linked contents. The complete graph, nested notices, and corresponding-source package remain open.

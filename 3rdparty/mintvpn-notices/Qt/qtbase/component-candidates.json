@@ -1,0 +1,362 @@
+[
+  {
+    "name": "BundledPcre2_Attribution_pcre2-sljit",
+    "version": "10.47",
+    "license": "BSD-2-Clause",
+    "source": "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.bz2",
+    "attribution_dir": "src/3rdparty/pcre2",
+    "license_file": "LICENSE-SLJIT"
+  },
+  {
+    "name": "BundledPcre2",
+    "version": "10.47",
+    "license": "LicenseRef-BSD-3-Clause-with-PCRE2-Binary-Like-Packages-Exception",
+    "source": "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.bz2",
+    "attribution_dir": "src/3rdparty/pcre2",
+    "license_file": "LICENCE.md"
+  },
+  {
+    "name": "BundledZLIB",
+    "version": "1.3.2",
+    "license": "Zlib",
+    "source": "https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.gz",
+    "attribution_dir": "src/3rdparty/zlib",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "Core_Attribution_unicode-character-database",
+    "version": "36",
+    "license": "Unicode-3.0",
+    "source": "https://www.unicode.org/ucd/",
+    "attribution_dir": "src/corelib/text",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_unicode-cldr",
+    "version": "v48.1",
+    "license": "Unicode-3.0",
+    "source": "https://cldr.unicode.org/",
+    "attribution_dir": "src/corelib/text",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_tlexpected",
+    "version": "41d3e1f48d682992a2230b2a715bca38b848b269",
+    "license": "CC0-1.0",
+    "source": "https://github.com/TartanLlama/expected/blob/41d3e1f48d682992a2230b2a715bca38b848b269/include/tl/expected.hpp",
+    "attribution_dir": "src/corelib/global",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_siphash",
+    "version": "unknown",
+    "license": "CC0-1.0",
+    "source": "https://raw.githubusercontent.com/veorq/SipHash/adcbf09b1684a718f594faa650ffc56bacdb0777/siphash24.c",
+    "attribution_dir": "src/3rdparty/siphash",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_blake2",
+    "version": "ed1974ea83433eba7b2d95c5dcd9ac33cb847913",
+    "license": "CC0-1.0 OR Apache-2.0",
+    "source": "https://github.com/BLAKE2/BLAKE2/tree/ed1974ea83433eba7b2d95c5dcd9ac33cb847913",
+    "attribution_dir": "src/3rdparty/blake2",
+    "license_file": "COPYING"
+  },
+  {
+    "name": "Core_Attribution_md4",
+    "version": "unknown",
+    "license": "CC0-1.0",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/3rdparty/md4",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_md5",
+    "version": "unknown",
+    "license": "CC0-1.0",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/3rdparty/md5",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_sha1",
+    "version": "unknown",
+    "license": "LicenseRef-SHA1-Public-Domain",
+    "source": "http://www.dominik-reichl.de/projects/csha1/",
+    "attribution_dir": "src/3rdparty/sha1",
+    "license_file": null
+  },
+  {
+    "name": "Core_Attribution_sha3_endian",
+    "version": "1.0.0",
+    "license": "BSD-2-Clause",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/3rdparty/sha3",
+    "license_file": "BRG_ENDIAN_LICENSE"
+  },
+  {
+    "name": "Core_Attribution_sha3_keccak",
+    "version": "3.2",
+    "license": "CC0-1.0",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/3rdparty/sha3",
+    "license_file": "CC0_LICENSE"
+  },
+  {
+    "name": "Core_Attribution_rfc6234",
+    "version": "unknown",
+    "license": "BSD-3-Clause",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/3rdparty/rfc6234",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "Core_Attribution_tinycbor",
+    "version": "7.0",
+    "license": "MIT",
+    "source": "https://github.com/intel/tinycbor/archive/v7.0/tinycbor-7.0.tar.gz",
+    "attribution_dir": "src/3rdparty/tinycbor",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "Core_Attribution_doubleconversion",
+    "version": "3.4.0",
+    "license": "BSD-3-Clause",
+    "source": "https://github.com/google/double-conversion/releases/tag/v3.4.0",
+    "attribution_dir": "src/3rdparty/double-conversion",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "Core_Attribution_easing",
+    "version": "unknown",
+    "license": "BSD-3-Clause",
+    "source": "http://robertpenner.com/easing/",
+    "attribution_dir": "src/3rdparty/easing",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "Core_Attribution_tika-mimetypes",
+    "version": "408c26e1e03e018a623e732dff6fb047a2fb8e19",
+    "license": "Apache-2.0",
+    "source": "https://github.com/apache/tika/blob/408c26e1e03e018a623e732dff6fb047a2fb8e19/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml",
+    "attribution_dir": "src/corelib/mimetypes/3rdparty",
+    "license_file": null
+  },
+  {
+    "name": "BundledLibpng",
+    "version": "1.6.58",
+    "license": "Libpng AND libpng-2.0",
+    "source": "https://download.sourceforge.net/libpng/libpng-1.6.58.tar.xz",
+    "attribution_dir": "src/3rdparty/libpng",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "BundledLibjpeg16bits",
+    "version": "3.1.4",
+    "license": "IJG AND BSD-3-Clause",
+    "source": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.4/libjpeg-turbo-3.1.4.tar.gz",
+    "attribution_dir": "src/3rdparty/libjpeg",
+    "license_file": null
+  },
+  {
+    "name": "BundledLibjpeg12bits",
+    "version": "3.1.4",
+    "license": "IJG AND BSD-3-Clause",
+    "source": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.4/libjpeg-turbo-3.1.4.tar.gz",
+    "attribution_dir": "src/3rdparty/libjpeg",
+    "license_file": null
+  },
+  {
+    "name": "BundledLibjpeg",
+    "version": "3.1.4",
+    "license": "IJG AND BSD-3-Clause",
+    "source": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.4/libjpeg-turbo-3.1.4.tar.gz",
+    "attribution_dir": "src/3rdparty/libjpeg",
+    "license_file": null
+  },
+  {
+    "name": "BundledFreetype_Attribution_freetype-zlib",
+    "version": "2.14.3",
+    "license": "Zlib",
+    "source": "https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.gz",
+    "attribution_dir": "src/3rdparty/freetype",
+    "license_file": "ZLIB-LICENSE.txt"
+  },
+  {
+    "name": "BundledFreetype_Attribution_freetype-bdf",
+    "version": "2.14.3",
+    "license": "MIT",
+    "source": "https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.gz",
+    "attribution_dir": "src/3rdparty/freetype",
+    "license_file": "BDF-LICENSE.txt"
+  },
+  {
+    "name": "BundledFreetype_Attribution_freetype-pcf",
+    "version": "2.14.3",
+    "license": "MIT AND MIT-open-group",
+    "source": "https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.gz",
+    "attribution_dir": "src/3rdparty/freetype",
+    "license_file": "PCF-LICENSE.txt"
+  },
+  {
+    "name": "BundledFreetype",
+    "version": "2.14.3",
+    "license": "FTL OR GPL-2.0-only",
+    "source": "https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.gz",
+    "attribution_dir": "src/3rdparty/freetype",
+    "license_file": "LICENSE.txt"
+  },
+  {
+    "name": "BundledHarfbuzz",
+    "version": "14.2.0",
+    "license": "MIT",
+    "source": "https://github.com/harfbuzz/harfbuzz/releases/tag/14.2.0",
+    "attribution_dir": "src/3rdparty/harfbuzz-ng",
+    "license_file": "COPYING"
+  },
+  {
+    "name": "Network_Attribution_zlib",
+    "version": "1.3.2",
+    "license": "Zlib",
+    "source": "https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.gz",
+    "attribution_dir": "src/3rdparty/zlib",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "Network_Attribution_psl-data",
+    "version": "2026-01-16_13-11-47_UTC",
+    "license": "MPL-2.0",
+    "source": "https://publicsuffix.org/list/public_suffix_list.dat",
+    "attribution_dir": "src/3rdparty/libpsl",
+    "license_file": "PSL-LICENSE.txt"
+  },
+  {
+    "name": "Network_Attribution_libpsl",
+    "version": "664f3dc85259ec65e30248a61fa1c45b7b0e4c3f",
+    "license": "BSD-3-Clause",
+    "source": "https://github.com/rockdaboot/libpsl",
+    "attribution_dir": "src/3rdparty/libpsl",
+    "license_file": "src/LICENSE.chromium"
+  },
+  {
+    "name": "Gui_Attribution_rhi-miniengine-d3d12-mipmap",
+    "version": "0aa79bad78992da0b6a8279ddb9002c1753cb849",
+    "license": "MIT",
+    "source": "https://github.com/microsoft/DirectX-Graphics-Samples",
+    "attribution_dir": "src/gui/rhi",
+    "license_file": "LICENSE.MiniEngine.txt"
+  },
+  {
+    "name": "Gui_Attribution_opengl-headers",
+    "version": "Revision 27684",
+    "license": "MIT",
+    "source": "https://www.khronos.org/",
+    "attribution_dir": "src/gui/opengl",
+    "license_file": "LICENSE.KHRONOS.txt"
+  },
+  {
+    "name": "Gui_Attribution_opengl-es2-headers",
+    "version": "Revision 27673",
+    "license": "MIT",
+    "source": "https://www.khronos.org/",
+    "attribution_dir": "src/gui/opengl",
+    "license_file": "LICENSE.KHRONOS.txt"
+  },
+  {
+    "name": "Gui_Attribution_grayraster",
+    "version": "unknown",
+    "license": "FTL OR GPL-2.0-only",
+    "source": "http://www.freetype.org",
+    "attribution_dir": "src/gui/painting",
+    "license_file": "../../3rdparty/freetype/LICENSE.txt"
+  },
+  {
+    "name": "Gui_Attribution_smooth-scaling-algorithm",
+    "version": "unknown",
+    "license": "BSD-2-Clause AND Imlib2",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/gui/painting",
+    "license_file": "LICENSE.QIMAGETRANSFORM.txt"
+  },
+  {
+    "name": "Gui_Attribution_xserverhelper",
+    "version": "unknown",
+    "license": "X11 AND HPND",
+    "source": "https://www.x.org/",
+    "attribution_dir": "src/gui/painting",
+    "license_file": "LICENSE.XCONSORTIUM.txt"
+  },
+  {
+    "name": "Gui_Attribution_aglfn",
+    "version": "1.7",
+    "license": "BSD-3-Clause",
+    "source": "https://github.com/adobe-type-tools/agl-aglfn",
+    "attribution_dir": "src/gui/text",
+    "license_file": "LICENSE.AGLFN.txt"
+  },
+  {
+    "name": "Gui_Attribution_vulkanmemoryallocator",
+    "version": "3.2.1",
+    "license": "MIT",
+    "source": "https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator",
+    "attribution_dir": "src/3rdparty/VulkanMemoryAllocator",
+    "license_file": "LICENSE.txt"
+  },
+  {
+    "name": "Gui_Attribution_emoji-segmenter",
+    "version": "0.4.0",
+    "license": "Apache-2.0",
+    "source": "https://github.com/google/emoji-segmenter/releases/tag/0.4.0",
+    "attribution_dir": "src/3rdparty/emoji-segmenter",
+    "license_file": null
+  },
+  {
+    "name": "Gui_Attribution_webgradients",
+    "version": "unknown",
+    "license": "MIT",
+    "source": "https://webgradients.com/",
+    "attribution_dir": "util/gradientgen",
+    "license_file": "LICENSE.WEBGRADIENTS.txt"
+  },
+  {
+    "name": "Gui_Attribution_icc-srgb-color-profile",
+    "version": "unknown",
+    "license": "LicenseRef-ICC-License",
+    "source": "http://www.color.org/",
+    "attribution_dir": "src/3rdparty/icc",
+    "license_file": "LICENSE.txt"
+  },
+  {
+    "name": "Gui_Attribution_d3d12memoryallocator",
+    "version": "f128d39b7a95b4235bd228d231646278dc6c24b2",
+    "license": "MIT",
+    "source": "https://github.com/GPUOpen-LibrariesAndSDKs/D3D12MemoryAllocator",
+    "attribution_dir": "src/3rdparty/D3D12MemoryAllocator",
+    "license_file": "LICENSE.txt"
+  },
+  {
+    "name": "Gui_Attribution_md4c",
+    "version": "0.5.2",
+    "license": "MIT",
+    "source": "https://github.com/mity/md4c/releases/tag/release-0.5.2",
+    "attribution_dir": "src/3rdparty/md4c",
+    "license_file": "LICENSE.md"
+  },
+  {
+    "name": "Gui_Attribution_zlib",
+    "version": "1.3.2",
+    "license": "Zlib",
+    "source": "https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.gz",
+    "attribution_dir": "src/3rdparty/zlib",
+    "license_file": "LICENSE"
+  },
+  {
+    "name": "QWindowsIntegrationPlugin_Attribution_wintab",
+    "version": "unknown",
+    "license": "LicenseRef-Lcs-Telegraphics",
+    "source": "NOASSERTION",
+    "attribution_dir": "src/3rdparty/wintab",
+    "license_file": null
+  }
+]
