@@ -575,7 +575,7 @@ void DialogBasicSettings::on_backup_create_clicked() {
     QString filePath = QFileDialog::getSaveFileName(
         this,
         tr("Create Backup"),
-        QDir::homePath() + "/Quattro-backup.thrbackup",
+        QDir::homePath() + "/MintVPN-backup.thrbackup",
         tr("Quattro Backup (*.thrbackup)").replace("Quattro", "MintVPN")
     );
     if (filePath.isEmpty()) return;

@@ -307,7 +307,7 @@ namespace API {
     QString Client::Start(bool *rpcOK, const libcore::LoadConfigReq &request) {
         libcore::ErrorResp reply;
         std::vector<uint8_t> resp;
-        auto status = channel->Call("Start", spb::pb::serialize<std::string>(request), resp);
+        auto status = channel->Call("Start", spb::pb::serialize<std::string>(request), resp, 180000);
 
         if (status == LocalSocketChannel::CallOK && tryDeserialize(resp, reply)) {
             *rpcOK = true;

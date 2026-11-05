@@ -27,6 +27,7 @@
 #include <srslist.h>
 #include "include/database/RoutesRepo.h"
 #include "include/ui/setting/RawRouteItem.h"
+#include "include/ui/setting/ManagedRouteDisplay.hpp"
 
 void DialogManageRoutes::reloadProfileItems() {
     if (chainList.empty()) {
@@ -41,8 +42,8 @@ void DialogManageRoutes::reloadProfileItems() {
     bool selectedChainGone = true;
     int i=0;
     for (const auto &item: chainList) {
-        ui->route_prof->addItem(item->name);
-        ui->route_profiles->addItem(item->name);
+        ui->route_prof->addItem(managedRouteDisplayName(item->name));
+        ui->route_profiles->addItem(managedRouteDisplayName(item->name));
         if (item == currentRoute) {
             ui->route_prof->setCurrentIndex(i);
             selectedChainGone=false;
@@ -337,7 +338,7 @@ DialogManageRoutes::DialogManageRoutes(QWidget *parent) : QDialog(parent), ui(ne
     ui->dnshijack_v4resp->setText(Configs::dataManager->settingsRepo->dns_v4_resp);
     ui->dnshijack_v6resp->setText(Configs::dataManager->settingsRepo->dns_v6_resp);
     connect(ui->dnshijack_what, &QPushButton::clicked, this, [=,this] {
-        MessageBoxInfo("What is this?", Configs::Information::HijackInfo);
+        MessageBoxInfo("What is this?", QString(Configs::Information::HijackInfo).replace("Quattro", "MintVPN"));
     });
 
     QStringList ruleItems = {"domain:", "suffix:", "regex:"};
@@ -600,7 +601,7 @@ void DialogManageRoutes::on_import_route_clicked()
         bool wasOldArray = false;
         if (auto profile = Configs::RouteProfile::FromShareInput(clip, &fatal, &warnings, &wasOldArray)) {
             const QString what = wasOldArray ? tr("a routing rule list")
-                                             : tr("routing profile \"%1\"").arg(profile->name);
+                                             : tr("routing profile \"%1\"").arg(managedRouteDisplayName(profile->name));
             QString prompt = tr("Import %1 from the clipboard?").arg(what);
             // endpoints are already created by the parse above, before this prompt
             if (!warnings.isEmpty()) prompt += "\n\n" + tr("Note:") + "\n" + warnings.trimmed();
@@ -620,7 +621,7 @@ void DialogManageRoutes::on_import_route_clicked()
 
     auto layout = new QGridLayout(w);
     auto tEdit = new QTextEdit(w);
-    tEdit->setPlaceholderText(tr("Paste a Quattro route link, a remoteRoute link, a base64 blob, or a JSON rule array"));
+    tEdit->setPlaceholderText(tr("Paste a Quattro route link, a remoteRoute link, a base64 blob, or a JSON rule array").replace("Quattro", "MintVPN"));
     layout->addWidget(tEdit, 0, 0);
 
     auto buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, w);

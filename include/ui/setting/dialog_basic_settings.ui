@@ -1306,7 +1306,7 @@ QTabBar::tab:hover:!selected {
          <layout class="QGridLayout" name="gridLayout_12">
            <item row="2" column="0" colspan="2">
             <widget class="QCheckBox" name="app_auto_update">
-             <property name="text"><string>Проверять обновления Quattro ежедневно</string></property>
+             <property name="text"><string>Проверять обновления MintVPN ежедневно</string></property>
              <property name="toolTip"><string>Только уведомление о новой версии; установка запускается вручную.</string></property>
             </widget>
            </item>

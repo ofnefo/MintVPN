@@ -7,10 +7,10 @@ generate_product_version(
         ICON "${CMAKE_SOURCE_DIR}/res/MintVPN.ico"
         NAME "MintVPN"
         BUNDLE "MintVPN"
-        COMPANY_NAME "Quattro"
-        COMPANY_COPYRIGHT "Quattro contributors"
+        COMPANY_NAME "MintVPN"
+        COMPANY_COPYRIGHT "MintVPN contributors"
         FILE_DESCRIPTION "MintVPN desktop client"
-        ORIGINAL_FILENAME "Quattro.exe"
+        ORIGINAL_FILENAME "MintVPN.exe"
         VERSION_MAJOR ${NKR_VERSION_MAJOR}
         VERSION_MINOR ${NKR_VERSION_MINOR}
         VERSION_PATCH ${NKR_VERSION_PATCH}

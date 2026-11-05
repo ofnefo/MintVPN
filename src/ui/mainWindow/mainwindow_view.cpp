@@ -14,6 +14,7 @@
 #include "include/database/SettingsRepo.h"
 #include "include/stats/autoselector/AutoSelectorMonitor.hpp"
 #include "include/ui/setting/Icon.hpp"
+#include "include/ui/setting/ManagedRouteDisplay.hpp"
 #include "include/ui/stats/dialog_auto_selector.h"
 #include "include/ui/utils/ProfilesTableFilterHeader.h"
 #include "include/ui/utils/ProfilesTableModel.h"
@@ -126,7 +127,7 @@ void MainWindow::refresh_status(const QString &traffic_update) {
     QString group_name;
     if (running != nullptr) {
         auto group = Configs::dataManager->groupsRepo->GetGroup(running->gid);
-        if (group != nullptr) group_name = group->name;
+        if (group != nullptr) group_name = group->name == QStringLiteral("Quattro") ? QStringLiteral("MintVPN") : group->name;
     }
 
     // An endpoint profile never resolves a country, so its tunnel state takes that slot.
@@ -165,7 +166,7 @@ void MainWindow::refresh_status(const QString &traffic_update) {
     QString activeRouteName = (route && route->name != "Default") ? route->name : "";
     if (activeRouteName == QStringLiteral("Quattro • Russia Bypass")) {
         activeRouteName = tr("Правила MintVPN");
-    }
+    } else activeRouteName = managedRouteDisplayName(activeRouteName);
 
     auto make_title = [=,this](bool isTray) {
         QStringList tt;

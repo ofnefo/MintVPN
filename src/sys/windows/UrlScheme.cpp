@@ -24,7 +24,7 @@ static QString openCommand() {
 }
 
 QString UrlScheme_DesiredState() {
-    return "v2|" + openCommand();
+    return "v3|" + openCommand();
 }
 
 void UrlScheme_Apply() {
@@ -32,12 +32,12 @@ void UrlScheme_Apply() {
     const QString exe = QDir::toNativeSeparators(QApplication::applicationFilePath());
 
     QSettings scheme(kClasses + "\\quattro", QSettings::NativeFormat);
-    scheme.setValue("Default", "URL:Quattro Protocol");
+    scheme.setValue("Default", "URL:MintVPN Protocol");
     scheme.setValue("URL Protocol", "");
     scheme.setValue("shell/open/command/Default", command);
 
     QSettings progId(kClasses + "\\" + kProgId, QSettings::NativeFormat);
-    progId.setValue("Default", "Quattro profile");
+    progId.setValue("Default", "MintVPN profile");
     progId.setValue("DefaultIcon/Default", exe + ",0");
     progId.setValue("shell/open/command/Default", command);
 
@@ -51,7 +51,7 @@ void UrlScheme_Apply() {
     // Applications\<exe> is what "Open with > Choose another app" reads, which is
     // the only route for a config file that has no extension at all.
     QSettings app(kClasses + "\\Applications\\" + QFileInfo(exe).fileName(), QSettings::NativeFormat);
-    app.setValue("FriendlyAppName", "Quattro");
+    app.setValue("FriendlyAppName", "MintVPN");
     app.setValue("shell/open/command/Default", command);
     for (const QString &ext : kConfigExtensions) {
         app.setValue("SupportedTypes/" + ext, "");

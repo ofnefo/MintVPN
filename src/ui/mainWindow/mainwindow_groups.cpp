@@ -71,15 +71,17 @@ void MainWindow::refresh_groups() {
     int index = 0;
     for (const auto &gid: Configs::dataManager->groupsRepo->GetGroupsTabOrder()) {
         const auto group = Configs::dataManager->groupsRepo->GetGroup(gid);
+        const QString displayName = group->name == QStringLiteral("Quattro")
+                ? QStringLiteral("MintVPN") : group->name;
         if (index == 0) {
-            ui->tabWidget->setTabText(0, group->name);
+            ui->tabWidget->setTabText(0, displayName);
         } else {
             auto widget2 = new QWidget();
             auto layout2 = new QVBoxLayout();
             layout2->setContentsMargins(QMargins());
             layout2->setSpacing(0);
             widget2->setLayout(layout2);
-            ui->tabWidget->addTab(widget2, group->name);
+            ui->tabWidget->addTab(widget2, displayName);
         }
         ui->tabWidget->tabBar()->setTabData(index, gid);
         index++;

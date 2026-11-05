@@ -184,9 +184,12 @@ void MainWindow::on_menu_exit_triggered() {
         updaterArgs.prepend(ready);
         updaterArgs.prepend("--mint-ready");
 #ifdef Q_OS_WIN
-        const bool copied = (!QFile::exists("./QuattroUpdater.old.exe") || QFile::remove("./QuattroUpdater.old.exe"))
-                && QFile::copy("./QuattroUpdater.exe", "./QuattroUpdater.old.exe");
-        const bool started = copied && QProcess::startDetached("./QuattroUpdater.old.exe", updaterArgs);
+        const QString updater = QFile::exists("./MintVPNUpdater.exe")
+                ? QStringLiteral("./MintVPNUpdater.exe") : QStringLiteral("./QuattroUpdater.exe");
+        const QString updaterCopy = QStringLiteral("./MintVPNUpdater.old.exe");
+        const bool copied = (!QFile::exists(updaterCopy) || QFile::remove(updaterCopy))
+                && QFile::copy(updater, updaterCopy);
+        const bool started = copied && QProcess::startDetached(updaterCopy, updaterArgs);
 #else
         const bool started = QProcess::startDetached("./QuattroUpdater", updaterArgs);
 #endif
@@ -415,7 +418,7 @@ bool isNewer(const QString &assetName) {
     QList<int> current;
     if (!parseReleaseVersion(assetName, true, &available) ||
         !parseReleaseVersion(QStringLiteral(NKR_VERSION), false, &current)) {
-        MW_show_log(QStringLiteral("Invalid Quattro release version: %1 (current: %2)")
+        MW_show_log(QStringLiteral("Invalid MintVPN release version: %1 (current: %2)")
                         .arg(assetName, QStringLiteral(NKR_VERSION)));
         return false;
     }

@@ -833,11 +833,10 @@ void MainWindow::importQuattroSubscription(const QString &url) {
     }
     if (!group) {
         group = Configs::GroupsRepo::NewGroup();
-        group->name = QStringLiteral("Quattro");
+        group->name = QStringLiteral("MintVPN");
         Configs::dataManager->groupsRepo->AddGroup(group);
     }
 
-    group->name = QStringLiteral("Quattro");
     group->url = url;
     group->skip_auto_update = false;
     Configs::dataManager->groupsRepo->Save(group);

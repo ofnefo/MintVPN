@@ -520,7 +520,7 @@ namespace Configs {
                 doc = QJsonDocument::fromJson(QByteArray::fromBase64(text.toUtf8()));
         }
         if (doc.isNull()) {
-            fatalError->append("Input is not valid JSON, base64, or a Quattro route link");
+            fatalError->append("Input is not valid JSON, base64, or a MintVPN route link");
             return nullptr;
         }
 

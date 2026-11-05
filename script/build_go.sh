@@ -32,7 +32,8 @@ pushd core/server
 
 if [[ "$GOOS" == "windows" || "$GOOS" == "linux" ]]; then
     UPDATER_EXT=$([[ "$GOOS" == "windows" ]] && echo ".exe" || true)
-    $GOCMD build -v -o "$DEST/QuattroUpdater$UPDATER_EXT" -trimpath -ldflags "-w -s" ./cmd/quattro-updater
+    UPDATER_NAME=$([[ "$GOOS" == "windows" ]] && echo "MintVPNUpdater" || echo "QuattroUpdater")
+    $GOCMD build -v -o "$DEST/$UPDATER_NAME$UPDATER_EXT" -trimpath -ldflags "-w -s" ./cmd/quattro-updater
 fi
 
 pushd gen

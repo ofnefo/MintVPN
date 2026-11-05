@@ -19,8 +19,8 @@
 
 Unicode true
 
-Name "Quattro Update ${APP_VERSION}"
-OutFile "QuattroUpdate-${APP_VERSION}.exe"
+Name "MintVPN Update ${APP_VERSION}"
+OutFile "MintVPNUpdate-${APP_VERSION}.exe"
 RequestExecutionLevel user
 
 ; The payload is already a compressed ZIP. Recompressing it makes the local
@@ -33,28 +33,27 @@ ShowInstDetails show
 !include LogicLib.nsh
 !addplugindir .\script\
 
-!define MUI_ICON "res\Quattro.ico"
+!define MUI_ICON "res\MintVPN.ico"
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_LANGUAGE "English"
 
 VIProductVersion "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_PATCH}.${APP_VERSION_BUILD}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "Quattro"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Quattro one-click update"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "MintVPN"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "MintVPN one-click update"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${APP_VERSION}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Quattro / Quattro contributors"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "MintVPN contributors"
 
 Function .onInit
-  StrCpy $INSTDIR "$LOCALAPPDATA\Quattro"
-  ${IfNot} ${FileExists} "$INSTDIR\Quattro.exe"
-  ${AndIfNot} ${FileExists} "$INSTDIR\MintVPN.exe"
+  StrCpy $INSTDIR "$LOCALAPPDATA\MintVPN\app"
+  ${IfNot} ${FileExists} "$INSTDIR\MintVPN.exe"
     MessageBox MB_OK|MB_ICONSTOP \
-      "Текущая установка Quattro не найдена:$\r$\n$INSTDIR$\r$\n$\r$\nСначала установите Quattro обычным установщиком."
+      "Текущая установка MintVPN не найдена:$\r$\n$INSTDIR$\r$\n$\r$\nСначала установите MintVPN обычным установщиком."
     Abort
   ${EndIf}
 
   MessageBox MB_YESNO|MB_ICONQUESTION \
-    "Обновить текущую установку Quattro до ${APP_VERSION}?$\r$\n$\r$\nПеред обновлением закройте MintVPN и Quattro вручную.$\r$\nПодписка, профили и настройки сохранятся." \
+    "Обновить текущую установку MintVPN до ${APP_VERSION}?$\r$\n$\r$\nПеред обновлением закройте MintVPN вручную.$\r$\nПодписка, профили и настройки сохранятся." \
     IDYES proceed
   Abort
   proceed:
@@ -68,7 +67,7 @@ FunctionEnd
   Pop $R0
   Pop $R1
   ${If} $R0 != 0
-    MessageBox MB_OK|MB_ICONSTOP "Close MintVPN and Quattro, then retry. If process checking is unavailable, installation is stopped."
+    MessageBox MB_OK|MB_ICONSTOP "Close MintVPN, then retry. If process checking is unavailable, installation is stopped."
     Abort
   ${EndIf}
 !macroend
@@ -82,24 +81,24 @@ Section "Update"
   File /oname=Quattro.zip "${UPDATE_ARCHIVE}"
 
   ; Run the worker outside the installation tree so it can atomically replace
-  ; QuattroUpdater.exe along with the rest of the application.
+  ; MintVPNUpdater.exe along with the rest of the application.
   InitPluginsDir
   SetOutPath "$PLUGINSDIR"
-  File /oname=QuattroUpdateWorker.exe "deployment\windows-amd64\QuattroUpdater.exe"
+  File /oname=MintVPNUpdateWorker.exe "deployment\windows-amd64\MintVPNUpdater.exe"
 
   DetailPrint "Устанавливаю обновление без изменения пользовательских данных..."
   SetOutPath "$INSTDIR"
-  ExecWait '"$PLUGINSDIR\QuattroUpdateWorker.exe"' $0
+  ExecWait '"$PLUGINSDIR\MintVPNUpdateWorker.exe"' $0
   ${If} $0 != 0
     MessageBox MB_OK|MB_ICONSTOP \
-      "Обновление завершилось с ошибкой ($0).$\r$\nПодробности: $INSTDIR\QuattroUpdateError.log"
+      "Обновление завершилось с ошибкой ($0).$\r$\nПодробности: $INSTDIR\MintVPNUpdateError.log"
     Abort
   ${EndIf}
 
-  WriteRegStr HKCU "Software\Quattro" "InstallPath" "$INSTDIR"
-  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Quattro" \
+  WriteRegStr HKCU "Software\MintVPNStable" "InstallPath" "$INSTDIR"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\MintVPNStable" \
               "DisplayVersion" "${APP_VERSION}"
-  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Quattro" \
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\MintVPNStable" \
               "InstallLocation" "$INSTDIR"
-  DetailPrint "Готово. Quattro перезапущен."
+  DetailPrint "Готово. MintVPN перезапущен."
 SectionEnd

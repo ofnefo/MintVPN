@@ -24,6 +24,7 @@
 #include "include/ui/profile/dialog_vpn_auth.h"
 
 #include "include/sys/Process.hpp"
+#include "include/sys/OwnedProcessAbort.hpp"
 
 #include <algorithm>
 #include <memory>
@@ -269,6 +270,24 @@ void MainWindow::profile_start(int _id) {
         bool rpcOK;
         const QString error = defaultClient->Start(&rpcOK, req);
         if (!rpcOK) {
+            // The RPC may still complete after its caller times out. Stop the owned
+            // core before reporting this profile as stopped.
+            bool stopped = false;
+            runOnThread([this, &stopped] {
+                QMutexLocker lock(&coreProcessMutex);
+                if (core_process != nullptr) core_process->start_profile_when_core_is_up = -1;
+                stopped = Configs_sys::abortOwnedProcess(core_process);
+                if (stopped) Configs::dataManager->settingsRepo->core_running = false;
+            }, DS_cores, true);
+            if (!stopped) {
+                // Keep a disconnectable, conservative state until termination is confirmed.
+                Configs::dataManager->settingsRepo->UpdateStartedId(ent->id);
+                running = ent;
+                runOnUiThread([this] {
+                    MessageBoxWarning(software_name, tr("Не удалось подтвердить отключение VPN. Перезапустите приложение."));
+                    refresh_status();
+                });
+            }
             return false;
         }
         if (!error.isEmpty()) {
@@ -415,10 +434,16 @@ void MainWindow::profile_start(int _id) {
             mu_stopping.lock();
             mu_stopping.unlock();
         }
-        // do start
-        MW_show_log(">>>>>>>> " + tr("Starting profile %1").arg(ent->outbound->DisplayTypeAndName()));
-        if (!profile_start_stage2()) {
-            MW_show_log("<<<<<<<< " + tr("Failed to start profile %1").arg(ent->outbound->DisplayTypeAndName()));
+        // A failed stop must not be followed by a second start. An abort may
+        // have stopped the core, so defer the normal fresh-core path until unlocked.
+        const bool restartCore = running == nullptr && !Configs::dataManager->settingsRepo->core_running;
+        if (running != nullptr) {
+            MW_show_log("<<<<<<<< " + tr("Failed to stop, please restart the program."));
+        } else if (!restartCore) {
+            MW_show_log(">>>>>>>> " + tr("Starting profile %1").arg(ent->outbound->DisplayTypeAndName()));
+            if (!profile_start_stage2()) {
+                MW_show_log("<<<<<<<< " + tr("Failed to start profile %1").arg(ent->outbound->DisplayTypeAndName()));
+            }
         }
         mu_starting.unlock();
         // cancel timeout
@@ -429,6 +454,7 @@ void MainWindow::profile_start(int _id) {
             // Start has resolved (success or failure); leave the Connecting state.
             m_profileConnecting = false;
             refresh_startstop_button();
+            if (restartCore && !Configs::dataManager->settingsRepo->prepare_exit) profile_start(ent->id);
         });
     });
 }
@@ -475,6 +501,8 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
     runOnUiThread([this] { refresh_auto_selector_view(); });
 
     runOnNewThread([=, this] {
+        const bool trafficWasEnabled = Stats::trafficLooper->loop_enabled;
+        const bool connectionListerWasSuspended = Stats::connection_lister->suspend;
         Stats::trafficLooper->loop_enabled = false;
         Stats::connection_lister->suspend = true;
         Stats::trafficLooper->loop_mutex.lock();
@@ -502,12 +530,29 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
         if (stopping != nullptr) {
             MW_show_log(">>>>>>>> " + tr("Stopping profile %1").arg(stopping->outbound->DisplayTypeAndName()));
         }
-        if (!profile_stop_stage2()) {
-            MW_show_log("<<<<<<<< " + tr("Failed to stop, please restart the program."));
+        bool stopped = profile_stop_stage2();
+        if (!stopped) {
+            runOnThread([this, &stopped] {
+                QMutexLocker lock(&coreProcessMutex);
+                if (core_process != nullptr) core_process->start_profile_when_core_is_up = -1;
+                stopped = Configs_sys::abortOwnedProcess(core_process);
+                if (stopped) Configs::dataManager->settingsRepo->core_running = false;
+            }, DS_cores, true);
+            if (stopped && Configs::dataManager->settingsRepo->spmode_system_proxy) set_system_proxy(false);
+            if (!stopped) {
+                Stats::trafficLooper->loop_enabled = trafficWasEnabled;
+                Stats::connection_lister->suspend = connectionListerWasSuspended;
+                MW_show_log("<<<<<<<< " + tr("Failed to stop, please restart the program."));
+                runOnUiThread([this] {
+                    MessageBoxWarning(software_name, tr("Не удалось подтвердить отключение VPN. Перезапустите приложение."));
+                });
+            }
         }
 
-        if (manual) Configs::dataManager->settingsRepo->UpdateStartedId(Configs::NoProfileId);
-        running = nullptr;
+        if (stopped) {
+            if (manual) Configs::dataManager->settingsRepo->UpdateStartedId(Configs::NoProfileId);
+            running = nullptr;
+        }
 
         runOnUiThread([=, this, &restartMsgboxTimer, &restartMsgbox] {
             if (restartMsgboxTimer != nullptr) {
@@ -520,8 +565,10 @@ void MainWindow::profile_stop(bool crash, bool block, bool manual) {
             // profile_start() stops the old run first, so only a stop outside a restart is the user's.
             const bool restartingForAuth = manual && id == m_vpnAuthRestartID;
             m_vpnAuthRestartID = -1;
-            if (manual && !restartingForAuth) clear_vpn_credential_overrides();
-            stop_vpn_challenge_poll();
+            if (stopped) {
+                if (manual && !restartingForAuth) clear_vpn_credential_overrides();
+                stop_vpn_challenge_poll();
+            }
             refresh_status();
             refresh_proxy_list({id});
 

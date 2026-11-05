@@ -59,7 +59,7 @@ DialogRuntimeStats::DialogRuntimeStats(QWidget* parent) : QDialog(parent), ui(ne
     ui->cpuChart->setCaption(tr("CPU"));
     ui->ramChart->setCaption(tr("RAM"));
     ui->labelQuattroName->setText(QStringLiteral("<span style=\"color:%1\">●</span> %2")
-                                     .arg(kRuntimeQuattroColor.name(), "Quattro"));
+                                     .arg(kRuntimeQuattroColor.name(), "MintVPN"));
     ui->labelCoreName->setText(QStringLiteral("<span style=\"color:%1\">●</span> %2")
                                    .arg(kRuntimeCoreColor.name(), tr("Core")));
 

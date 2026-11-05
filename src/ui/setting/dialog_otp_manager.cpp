@@ -388,7 +388,7 @@ void DialogOtpManager::exportOtpAsMigration(const QList<std::shared_ptr<Configs:
 }
 
 void DialogOtpManager::exportOtpAsJson(const QList<std::shared_ptr<Configs::OtpProfile>> &profiles) {
-    const auto path = QFileDialog::getSaveFileName(this, tr("Export OTP"), QDir::homePath() + "/Quattro-otp.json",
+    const auto path = QFileDialog::getSaveFileName(this, tr("Export OTP"), QDir::homePath() + "/MintVPN-otp.json",
                                                    tr("JSON (*.json)"));
     if (path.isEmpty()) return;
 

@@ -40,7 +40,7 @@ SetCompressorDictSize 64
 
 !define APP_DIR_NAME "MintVPN"
 
-!define MUI_ICON "res\Quattro.ico"
+!define MUI_ICON "res\MintVPN.ico"
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE "Добро пожаловать в MintVPN"
 !define MUI_WELCOMEPAGE_TEXT "Мастер установит MintVPN на этот компьютер."
@@ -83,10 +83,10 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "MintVPN"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "MintVPN Setup"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${APP_VERSION}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "Quattro / Quattro contributors"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "MintVPN contributors"
 
 UninstallText "Удалить MintVPN с этого компьютера?"
-UninstallIcon "res\Quattro.ico"
+UninstallIcon "res\MintVPN.ico"
 
 ; =====================================
 ; INIT & SEAMLESS RESTART LOGIC
@@ -151,7 +151,7 @@ Function ProfilePageLeave
     ; Any other chosen profile must already contain the expected database.
     ${If} $ProfilePath != "$LOCALAPPDATA\MintVPN\profile"
       IfFileExists "$ProfilePath\config\quattro.db" +3 0
-      MessageBox MB_OK|MB_ICONSTOP "The selected directory does not contain config\quattro.db."
+      MessageBox MB_OK|MB_ICONSTOP "The selected directory does not contain a compatible profile database."
       Abort
     ${EndIf}
   ${EndIf}
@@ -271,7 +271,7 @@ install_no_conflict:
   ; Validate even in silent mode, where custom page validation is skipped.
   ${If} $ProfilePath != "$LOCALAPPDATA\MintVPN\profile"
     IfFileExists "$ProfilePath\config\quattro.db" +2 0
-    Abort "The selected directory does not contain config\quattro.db."
+    Abort "The selected directory does not contain a compatible profile database."
   ${EndIf}
   ; Reject overlapping profile/install trees, including a not-yet-created default profile.
   StrLen $0 "$INSTDIR\"
@@ -300,33 +300,33 @@ install_ready:
   ; Reproducible local package for the current Windows x64 target. Release CI
   ; omits this define and keeps producing the multi-architecture installer.
   ${IfNot} ${IsNativeAMD64}
-    Abort "This Quattro build requires 64-bit Windows on an x64 processor."
+    Abort "This MintVPN build requires 64-bit Windows on an x64 processor."
   ${EndIf}
   File /oname=libcronet.dll "deployment\windows-amd64\libcronet.dll"
   File /oname=MintVPNCore.exe "deployment\windows-amd64\MintVPNCore.exe"
   File /oname=MintVPN.exe "deployment\windows-amd64\MintVPN.exe"
-  File /oname=QuattroUpdater.exe "deployment\windows-amd64\QuattroUpdater.exe"
+  File /oname=MintVPNUpdater.exe "deployment\windows-amd64\MintVPNUpdater.exe"
 !else
   ${If} ${IsNativeAMD64}
     ${If} ${AtLeastWaaS} 1809
       File /oname=libcronet.dll "deployment\windows-amd64\libcronet.dll"
       File /oname=MintVPNCore.exe "deployment\windows-amd64\MintVPNCore.exe"
       File /oname=MintVPN.exe "deployment\windows-amd64\MintVPN.exe"
-      File /oname=QuattroUpdater.exe "deployment\windows-amd64\QuattroUpdater.exe"
+      File /oname=MintVPNUpdater.exe "deployment\windows-amd64\MintVPNUpdater.exe"
     ${Else}
       File /oname=MintVPNCore.exe "deployment\windowslegacy-amd64\MintVPNCore.exe"
       File /oname=MintVPN.exe "deployment\windowslegacy-amd64\MintVPN.exe"
-      File /oname=QuattroUpdater.exe "deployment\windowslegacy-amd64\QuattroUpdater.exe"
+      File /oname=MintVPNUpdater.exe "deployment\windowslegacy-amd64\MintVPNUpdater.exe"
     ${EndIf}
   ${ElseIf} ${IsNativeARM64}
     File /oname=libcronet.dll "deployment\windows-arm64\libcronet.dll"
     File /oname=MintVPNCore.exe "deployment\windows-arm64\MintVPNCore.exe"
     File /oname=MintVPN.exe "deployment\windows-arm64\MintVPN.exe"
-    File /oname=QuattroUpdater.exe "deployment\windows-arm64\QuattroUpdater.exe"
+    File /oname=MintVPNUpdater.exe "deployment\windows-arm64\MintVPNUpdater.exe"
   ${ElseIf} ${IsNativeIA32}
     File /oname=MintVPNCore.exe "deployment\windowslegacy-386\MintVPNCore.exe"
     File /oname=MintVPN.exe "deployment\windowslegacy-386\MintVPN.exe"
-    File /oname=QuattroUpdater.exe "deployment\windowslegacy-386\QuattroUpdater.exe"
+    File /oname=MintVPNUpdater.exe "deployment\windowslegacy-386\MintVPNUpdater.exe"
   ${Else}
     Abort "Unsupported CPU architecture!"
   ${EndIf}
@@ -396,6 +396,8 @@ Section "Uninstall"
   Delete "$INSTDIR\libcronet.dll"
   Delete "$INSTDIR\MintVPNCore.exe"
   Delete "$INSTDIR\MintVPN.exe"
+  Delete "$INSTDIR\MintVPNUpdater.exe"
+  Delete "$INSTDIR\MintVPNUpdater.old.exe"
   Delete "$INSTDIR\QuattroUpdater.exe"
   Delete "$INSTDIR\QuattroUpdater.old.exe"
   Delete "$INSTDIR\uninstall.exe"

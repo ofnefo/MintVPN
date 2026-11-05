@@ -1,4 +1,5 @@
 #include "include/ui/setting/RawRouteItem.h"
+#include "include/ui/setting/ManagedRouteDisplay.hpp"
 
 #include "include/global/Configs.hpp"
 #include "include/database/ProfilesRepo.h"
@@ -207,7 +208,7 @@ RawRouteItem::RawRouteItem(QWidget* parent, const std::shared_ptr<Configs::Route
     auto* layout = new QVBoxLayout(this);
 
     auto* form = new QFormLayout();
-    nameEdit = new QLineEdit(chain->name, this);
+    nameEdit = new QLineEdit(managedRouteDisplayName(chain->name), this);
     form->addRow(tr("Name"), nameEdit);
     layout->addLayout(form);
 
@@ -215,7 +216,7 @@ RawRouteItem::RawRouteItem(QWidget* parent, const std::shared_ptr<Configs::Route
     preventCheck->setChecked(chain->preventModifications);
     preventCheck->setToolTip(tr("Use the route object exactly as written (outbound ids are still resolved to tags).\n"
                                 "Quattro will NOT add its DNS-hijack or xray bridge plumbing, so DNS, chained/xray\n"
-                                "outbounds and other Quattro features may break. For advanced users only."));
+                                "outbounds and other Quattro features may break. For advanced users only.").replace("Quattro", "MintVPN"));
     layout->addWidget(preventCheck);
 
     jsonEdit = new RawRouteEdit(this);
@@ -329,7 +330,8 @@ RawRouteItem::RawRouteItem(QWidget* parent, const std::shared_ptr<Configs::Route
 }
 
 void RawRouteItem::accept() {
-    chain->name = nameEdit->text();
+    if (nameEdit->text() != managedRouteDisplayName(chain->name))
+        chain->name = nameEdit->text();
     if (chain->name.isEmpty()) {
         MessageBoxWarning(tr("Invalid operation"), tr("Cannot create Route Profile with empty name"));
         return;

@@ -24,9 +24,9 @@ const (
 
 func main() {
 	if err := run(); err != nil {
-		message := fmt.Sprintf("Quattro update failed: %v\n", err)
+		message := fmt.Sprintf("MintVPN update failed: %v\n", err)
 		log.Print(message)
-		_ = os.WriteFile("QuattroUpdateError.log", []byte(message), 0o600)
+		_ = os.WriteFile("MintVPNUpdateError.log", []byte(message), 0o600)
 		os.Exit(1)
 	}
 }
@@ -111,7 +111,7 @@ func run() error {
 		return fmt.Errorf("update failed, old files restored and GUI started: %w", err)
 	}
 	_ = os.Remove(archivePath)
-	_ = os.Remove("QuattroUpdateError.log")
+	_ = os.Remove("MintVPNUpdateError.log")
 	return nil
 }
 
@@ -342,10 +342,10 @@ func restartQuattro(workingDir string, args []string) error {
 	command := exec.Command(executable, args...)
 	command.Dir = workingDir
 	if err := command.Start(); err != nil {
-		return fmt.Errorf("restart Quattro: %w", err)
+		return fmt.Errorf("restart MintVPN: %w", err)
 	}
 	if command.Process == nil {
-		return errors.New("restart Quattro: process was not created")
+		return errors.New("restart MintVPN: process was not created")
 	}
 	return command.Process.Release()
 }

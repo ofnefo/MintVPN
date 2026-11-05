@@ -35,7 +35,7 @@ static QString iconTarget() {
 }
 
 QString UrlScheme_DesiredState() {
-    return "v3|" + execTarget();
+    return "v4|" + execTarget();
 }
 
 void UrlScheme_Apply() {
@@ -47,7 +47,7 @@ void UrlScheme_Apply() {
         QTextStream ts(&f);
         ts << "[Desktop Entry]\n"
            << "Type=Application\n"
-           << "Name=Quattro\n"
+           << "Name=MintVPN\n"
            << "Icon=" << iconTarget() << "\n"
            << "Exec=\"" << execTarget() << "\" %U\n"
            << "MimeType=x-scheme-handler/quattro;application/json;application/yaml;text/yaml;text/plain;\n"

@@ -40,6 +40,7 @@
 #include "include/api/RPC.h"
 
 #ifdef Q_OS_WIN
+#include <windows.h>
 #include "include/sys/windows/MiniDump.h"
 #include "include/sys/windows/eventHandler.h"
 #include "include/sys/windows/WinVersion.h"
@@ -274,6 +275,16 @@ int main(int argc, char* argv[]) {
     }
     Logging::InstallQtMessageHandler();
 
+    // Scheduled Task's default priority is BelowNormal. A VPN and its child
+    // core must remain responsive while desktop renders occupy the CPU.
+#ifdef Q_OS_WIN
+    const DWORD processPriority = GetPriorityClass(GetCurrentProcess());
+    if (processPriority == IDLE_PRIORITY_CLASS || processPriority == BELOW_NORMAL_PRIORITY_CLASS) {
+        if (!SetPriorityClass(GetCurrentProcess(), NORMAL_PRIORITY_CLASS))
+            qWarning() << "MintVPN could not restore normal process priority:" << GetLastError();
+    }
+#endif
+
     // Core dump
 #ifdef Q_OS_WIN
     if (!initialSmoke && !portableFirstRun) Windows_SetCrashHandler();
@@ -338,6 +349,9 @@ int main(int argc, char* argv[]) {
     QDir::setCurrent(QApplication::applicationDirPath());
     if (!isolatedSmoke && QFile::exists("QuattroUpdater.old.exe")) {
         QFile::remove("QuattroUpdater.old.exe");
+    }
+    if (!isolatedSmoke && QFile::exists("MintVPNUpdater.old.exe")) {
+        QFile::remove("MintVPNUpdater.old.exe");
     }
 
     // dirs & clean

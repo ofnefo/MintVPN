@@ -1,4 +1,5 @@
 #include "include/sys/Process.hpp"
+#include "include/sys/OwnedProcessAbort.hpp"
 #include "include/global/Configs.hpp"
 #include "include/global/Logger.hpp"
 
@@ -60,7 +61,7 @@ namespace Configs_sys {
 
             if (!Configs::dataManager->settingsRepo->prepare_exit && state == NotRunning) {
                 if (failed_to_start) return; // no retry
-                if (restarting) return;
+                if (restarting || property(explicitAbortProperty).toBool()) return;
 
                 MW_show_log("[Fatal] " + QObject::tr("Core exited, cleaning up..."));
 
@@ -80,7 +81,11 @@ namespace Configs_sys {
                 // Restart
                 start_profile_when_core_is_up = Configs::dataManager->settingsRepo->started_id;
                 MW_show_log("[Warn] " + QObject::tr("Restarting the core ..."));
-                setTimeout([=,this] { Restart(); }, this, 200);
+                const auto restartGeneration = property(abortGenerationProperty).toULongLong();
+                setTimeout([=,this] {
+                    if (!property(explicitAbortProperty).toBool() &&
+                        property(abortGenerationProperty).toULongLong() == restartGeneration) Restart();
+                }, this, 200);
             }
         });
     }
@@ -106,6 +111,7 @@ namespace Configs_sys {
     }
 
     void CoreProcess::Restart() {
+        setProperty(explicitAbortProperty, false);
         restarting = true;
         kill();
         waitForFinished(500);

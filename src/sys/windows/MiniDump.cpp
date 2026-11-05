@@ -137,7 +137,7 @@ static void WriteSidecar(const wchar_t *path, EXCEPTION_POINTERS *pException, bo
     SYSTEMTIME st;
     GetLocalTime(&st);
 
-    AppendA(file, "Quattro crash report\r\n===================\r\n");
+    AppendA(file, "MintVPN crash report\r\n====================\r\n");
     wsprintfA(line, "time      : %04d-%02d-%02d %02d:%02d:%02d\r\n",
               st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
     AppendA(file, line);
@@ -259,13 +259,13 @@ static void WriteCrashArtifacts(EXCEPTION_POINTERS *pException) {
     wchar_t addrHex[17];
     HexPtrW(addrHex, record != nullptr ? record->ExceptionAddress : nullptr);
     wsprintfW(msg,
-              L"Quattro %s (%s) crashed.\n\nException: 0x%08X\nAddress: 0x%s\n\n"
+              L"MintVPN %s (%s) crashed.\n\nException: 0x%08X\nAddress: 0x%s\n\n"
               L"A crash report was saved to:\n%s\n\nPlease attach the .txt file (and the .dmp if you can) to a bug report.",
               L"" NKR_VERSION, QUATTRO_ARCH,
               record != nullptr ? record->ExceptionCode : 0,
               addrHex,
               g_dumpPathTemplate);
-    MessageBoxW(nullptr, msg, L"Quattro crashed", MB_OK | MB_ICONERROR | MB_SETFOREGROUND);
+    MessageBoxW(nullptr, msg, L"MintVPN crashed", MB_OK | MB_ICONERROR | MB_SETFOREGROUND);
 }
 
 LONG __stdcall CreateCrashHandler(EXCEPTION_POINTERS *pException) {

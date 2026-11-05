@@ -309,7 +309,7 @@ namespace Configs {
 
     void SettingsRepo::UpdateStartedId(int id) {
         started_id = id;
-        remember_id = id;
+        if (id >= 0) remember_id = id;
         Save();
     }
 

@@ -1,9 +1,9 @@
 [CmdletBinding()]
 param(
-    [string]$Version = "0.1.3",
-    [int]$VersionMajor = 0,
-    [int]$VersionMinor = 1,
-    [int]$VersionPatch = 3,
+    [string]$Version = "1.0.0",
+    [int]$VersionMajor = 1,
+    [int]$VersionMinor = 0,
+    [int]$VersionPatch = 0,
     [int]$VersionBuild = 0
 )
 
@@ -44,14 +44,13 @@ if (Test-Path -LiteralPath $deploymentRoot) {
 }
 New-Item -ItemType Directory -Path $payloadRoot -Force | Out-Null
 
-$runtimeFiles = @("MintVPN.exe", "QuattroCore.exe", "QuattroUpdater.exe", "libcronet.dll")
+$runtimeFiles = @("MintVPN.exe", "MintVPNCore.exe", "MintVPNUpdater.exe", "libcronet.dll")
 foreach ($name in $runtimeFiles) {
     $source = Join-Path $runtimeRoot $name
     if (-not (Test-Path -LiteralPath $source)) {
         throw "Missing staged runtime file: $source"
     }
-    $destinationName = if ($name -eq "QuattroCore.exe") { "MintVPNCore.exe" } else { $name }
-    Copy-Item -LiteralPath $source -Destination (Join-Path $payloadRoot $destinationName)
+    Copy-Item -LiteralPath $source -Destination (Join-Path $payloadRoot $name)
 }
 
 # Preserve available licences in the update archive too. Missing notices fail the build.
@@ -93,4 +92,4 @@ finally {
     Pop-Location
 }
 
-Get-Item -LiteralPath (Join-Path $projectRoot "QuattroUpdate-$Version.exe")
+Get-Item -LiteralPath (Join-Path $projectRoot "MintVPNUpdate-$Version.exe")

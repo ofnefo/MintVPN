@@ -1,4 +1,5 @@
 #include "include/ui/setting/RouteItem.h"
+#include "include/ui/setting/ManagedRouteDisplay.hpp"
 
 #include "include/configs/generate.h"
 #include "include/database/ProfilesRepo.h"
@@ -85,7 +86,7 @@ RouteItem::RouteItem(QWidget *parent, const std::shared_ptr<Configs::RouteProfil
             item->name = baseName;
             break;
         }
-        ui->route_items->addItem(item->name);
+        ui->route_items->addItem(managedRuleDisplayName(item->name));
     }
 
     outbounds = {"proxy", "direct", "warp-bypass"};
@@ -110,7 +111,7 @@ RouteItem::RouteItem(QWidget *parent, const std::shared_ptr<Configs::RouteProfil
         geo_items.append(QString::fromUtf8(item.first.data(), item.first.size()));
     }
 
-    ui->route_name->setText(chain->name);
+    ui->route_name->setText(managedRouteDisplayName(chain->name));
     ui->rule_preview->setReadOnly(true);
     ui->rule_attr_tabs->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     ui->rule_attr_tabs->setTabsClosable(true);
@@ -527,7 +528,7 @@ void RouteItem::applyRuleEditLock() {
 void RouteItem::reloadRuleViewsFromChain() {
     currentIndex = -1;
     // A Fetch may have adopted the remote profile name (when the field was empty).
-    ui->route_name->setText(chain->name);
+    ui->route_name->setText(managedRouteDisplayName(chain->name));
     syncEndpointRules();
     simpleDirect->setPlainText(chain->GetSimpleRules(Configs::bypass));
     simpleBlock->setPlainText(chain->GetSimpleRules(Configs::block));
@@ -537,7 +538,8 @@ void RouteItem::reloadRuleViewsFromChain() {
 }
 
 void RouteItem::accept() {
-    chain->name = ui->route_name->text();
+    if (ui->route_name->text() != managedRouteDisplayName(chain->name))
+        chain->name = ui->route_name->text();
 
     if (chain->name == "") {
         MessageBoxWarning(tr("Invalid operation"), tr("Cannot create Route Profile with empty name"));
@@ -599,7 +601,7 @@ void RouteItem::updateRouteItemsView() {
     if (chain->IsEmpty()) return;
 
     for (const auto& item: chain->Rules) {
-        ui->route_items->addItem(item->name);
+        ui->route_items->addItem(managedRuleDisplayName(item->name));
         if (!routeItemIsEndpointRule(item)) continue;
         auto* row = ui->route_items->item(ui->route_items->count() - 1);
         QFont font = row->font();
@@ -874,7 +876,7 @@ void RouteItem::updateRuleSection() {
     auto rule = chain->Rules[currentIndex];
     {
         const QSignalBlocker nameBlocker(ui->rule_name);
-        ui->rule_name->setText(rule->name);
+        ui->rule_name->setText(managedRuleDisplayName(rule->name));
     }
     if (routeItemIsEndpointRule(rule)) {
         updateRulePreview();
