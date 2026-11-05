@@ -1,4 +1,5 @@
 #include "include/sys/AutoRun.hpp"
+#include "include/sys/AutoRunTaskXml.hpp"
 
 #include <QCryptographicHash>
 #include <QDir>
@@ -25,6 +26,12 @@ QString getCurrentUser() {
     return domain + "\\" + user;
 }
 
+QString autoRunCurrentArguments() {
+    const bool useAppdata = Configs::dataManager->settingsRepo->flag_use_appdata;
+    const QString profile = QDir::toNativeSeparators(QDir::cleanPath(Configs::GetBasePath()));
+    return autoRunArguments(useAppdata, profile);
+}
+
 void enable_autorun() {
     QString taskName = GetTaskName();
     QString exePath = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
@@ -32,51 +39,7 @@ void enable_autorun() {
 
     QString runLevel = (Configs::IsAdmin() && !Configs::dataManager->settingsRepo->disable_run_admin) ? "HighestAvailable" : "LeastPrivilege";
 
-    QString xmlContent = QString(
-        "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n"
-        "<Task version=\"1.2\" xmlns=\"http://schemas.microsoft.com/windows/2004/02/mit/task\">\n"
-        "  <RegistrationInfo>\n"
-        "    <Author>%1</Author>\n"
-        "  </RegistrationInfo>\n"
-        "  <Triggers>\n"
-        "    <LogonTrigger>\n"
-        "      <Enabled>true</Enabled>\n"
-        "    </LogonTrigger>\n"
-        "  </Triggers>\n"
-        "  <Principals>\n"
-        "    <Principal id=\"Author\">\n"
-        "      <GroupId>S-1-5-32-545</GroupId>\n"
-        "      <RunLevel>%2</RunLevel>\n"
-        "    </Principal>\n"
-        "  </Principals>\n"
-        "  <Settings>\n"
-        "    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>\n"
-        "    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>\n"
-        "    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>\n"
-        "    <AllowHardTerminate>false</AllowHardTerminate>\n"
-        "    <StartWhenAvailable>false</StartWhenAvailable>\n"
-        "    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>\n"
-        "    <IdleSettings>\n"
-        "      <StopOnIdleEnd>true</StopOnIdleEnd>\n"
-        "      <RestartOnIdle>false</RestartOnIdle>\n"
-        "    </IdleSettings>\n"
-        "    <AllowStartOnDemand>true</AllowStartOnDemand>\n"
-        "    <Enabled>true</Enabled>\n"
-        "    <Hidden>false</Hidden>\n"
-        "    <RunOnlyIfIdle>false</RunOnlyIfIdle>\n"
-        "    <WakeToRun>false</WakeToRun>\n"
-        "    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>\n"
-        // Task Scheduler's default of 7 is BELOW_NORMAL_PRIORITY_CLASS, which the core process inherits from us; 4-6 are the interactive band.
-        "    <Priority>5</Priority>\n"
-        "  </Settings>\n"
-        "  <Actions Context=\"Author\">\n"
-        "    <Exec>\n"
-        "      <Command>\"%3\"</Command>\n"
-        "      <Arguments>-tray</Arguments>\n"
-        "    </Exec>\n"
-        "  </Actions>\n"
-        "</Task>"
-    ).arg(userId, runLevel, exePath);
+    const QString xmlContent = autoRunTaskXml(userId, runLevel, exePath, autoRunCurrentArguments());
 
     QString xmlFilePath = QDir::toNativeSeparators(QDir::tempPath() + "\\Quattro_Task.xml");
     QFile xmlFile(xmlFilePath);
@@ -161,7 +124,8 @@ void AutoRun_FixTaskIfNeeded() {
         QString output = QString::fromLocal8Bit(process.readAllStandardOutput());
         if (!output.contains("xml")) return;
         bool privilegeIsStale = (runLevel == "HighestAvailable" && !output.contains("HighestAvailable")) || (runLevel == "LeastPrivilege" && output.contains("HighestAvailable"));
-        const bool startupModeIsStale = !output.contains("<Arguments>-tray</Arguments>", Qt::CaseInsensitive);
+        const bool startupModeIsStale = autoRunXmlElement(output, QStringLiteral("Arguments")) != autoRunCurrentArguments() ||
+            !autoRunXmlElement(output, QStringLiteral("GroupId")).isNull();
         if (privilegeIsStale || autoRun_priorityIsStale(output) || startupModeIsStale) AutoRun_SetEnabled(true);
     }
 }
