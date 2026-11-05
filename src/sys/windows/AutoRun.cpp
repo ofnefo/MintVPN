@@ -10,7 +10,19 @@
 
 #include "3rdparty/WinCommander.hpp"
 
+// An administrator can delegate logon ordering to an existing scheduled task.
+// Keep this opt-in in the active profile, separate from subscription data.
+QString managedAutoRunTask() {
+    QFile file(QDir(Configs::GetBasePath()).filePath(QStringLiteral("startup-task.txt")));
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return {};
+    const QString name = QString::fromUtf8(file.readAll()).trimmed();
+    if (name.isEmpty() || name.size() > 238 || name.contains('\n') || name.contains('\r')) return {};
+    return name;
+}
+
 QString GetTaskName() {
+    const QString managedTask = managedAutoRunTask();
+    if (!managedTask.isEmpty()) return managedTask;
     QString exePath = QDir::cleanPath(QCoreApplication::applicationFilePath()).toLower();
 
     QByteArray hash = QCryptographicHash::hash(exePath.toUtf8(), QCryptographicHash::Md5).toHex();
@@ -52,7 +64,7 @@ void enable_autorun() {
     }
 
     QStringList args;
-    args << "/create" << "/tn" << taskName << "/xml" << "\"" + xmlFilePath + "\"" << "/f";
+    args << "/create" << "/tn" << taskName << "/xml" << xmlFilePath << "/f";
 
     QProcess process;
     process.start("schtasks.exe", args);
@@ -79,6 +91,16 @@ void disable_autorun() {
 }
 
 void AutoRun_SetEnabled(bool enable) {
+    const QString managedTask = managedAutoRunTask();
+    if (!managedTask.isEmpty()) {
+        // Never replace the coordinator's triggers, arguments or other actions.
+        const QStringList args = {QStringLiteral("/change"), QStringLiteral("/tn"), managedTask,
+                                  enable ? QStringLiteral("/ENABLE") : QStringLiteral("/DISABLE")};
+        QProcess process;
+        process.start(QStringLiteral("schtasks.exe"), args);
+        process.waitForFinished();
+        return;
+    }
     if (enable) {
         enable_autorun();
     } else {
@@ -113,6 +135,7 @@ bool autoRun_priorityIsStale(const QString &xml) {
 }
 
 void AutoRun_FixTaskIfNeeded() {
+    if (!managedAutoRunTask().isEmpty()) return;
     QString taskName = GetTaskName();
     QString runLevel = (Configs::IsAdmin() && !Configs::dataManager->settingsRepo->disable_run_admin) ? "HighestAvailable" : "LeastPrivilege";
 

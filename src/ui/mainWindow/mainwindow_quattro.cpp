@@ -264,6 +264,15 @@ std::shared_ptr<Configs::RouteProfile> ensureQuattroRussiaProfile() {
         rule->type = Configs::simpleAddressProxy;
         rule->action = QStringLiteral("route");
         rule->outboundID = Configs::proxyID;
+        for (const auto &existing : profile->Rules) {
+            if (existing && existing->name == rule->name && existing->action == QStringLiteral("route")
+                && existing->outboundID > 0
+                && Configs::dataManager->profilesRepo->GetProfile(existing->outboundID)) {
+                rule->outboundID = existing->outboundID;
+                rule->type = Configs::custom;
+                break;
+            }
+        }
         rule->domain_suffix = service.domains;
         services << rule;
     }
@@ -305,10 +314,18 @@ std::shared_ptr<Configs::RouteProfile> ensureQuattroRussiaProfile() {
                       QStringLiteral("172.16.0.0/12"), QStringLiteral("192.168.0.0/16"),
                       QStringLiteral("::1/128"), QStringLiteral("fc00::/7"), QStringLiteral("fe80::/10")};
     services << local;
-    QList<std::shared_ptr<Configs::RouteRule>> retained;
-    for (const auto &rule : profile->Rules)
-        if (rule && !rule->name.startsWith(builtinPrefix)) retained << rule;
-    profile->Rules = services + retained;
+    QList<std::shared_ptr<Configs::RouteRule>> processOverrides, retained;
+    for (const auto &rule : profile->Rules) {
+        if (!rule || rule->name.startsWith(builtinPrefix)) continue;
+        const bool hasProcess = !rule->process_name.isEmpty() || !rule->process_path.isEmpty()
+            || !rule->process_path_regex.isEmpty();
+        if (hasProcess && rule->action == QStringLiteral("route") && rule->outboundID > 0
+            && Configs::dataManager->profilesRepo->GetProfile(rule->outboundID))
+            processOverrides << rule;
+        else
+            retained << rule;
+    }
+    profile->Rules = processOverrides + services + retained;
 
     profile->isRaw = false;
     profile->isRemote = false;
@@ -695,11 +712,11 @@ void MainWindow::setupQuattroDashboard() {
         }
         settings->Save();
         AutoRun_SetEnabled(enabled);
-        const bool active = enabled && AutoRun_IsEnabled();
-        if (enabled && !active) {
-            settings->remember_enable = false;
+        const bool active = AutoRun_IsEnabled();
+        if (enabled != active) {
+            settings->remember_enable = active;
             settings->Save();
-            MessageBoxWarning(tr("Автоподключение"), tr("Windows не разрешила создать задачу автозапуска."));
+            MessageBoxWarning(tr("Автоподключение"), tr("Не удалось изменить автозапуск в Windows. Проверьте задачу в планировщике."));
         }
         ui->actionStart_with_system->setChecked(active);
         ui->actionRemember_last_proxy->setChecked(active);
